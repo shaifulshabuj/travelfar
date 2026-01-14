@@ -3,6 +3,8 @@
 [![Java](https://img.shields.io/badge/Java-17-blue.svg)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.1-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![CI/CD Pipeline](https://github.com/shaifulshabuj/travelfar/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/shaifulshabuj/travelfar/actions)
+[![Docker Build](https://github.com/shaifulshabuj/travelfar/workflows/Docker%20Build%20and%20Publish/badge.svg)](https://github.com/shaifulshabuj/travelfar/actions)
 
 A production-quality Spring Boot REST API for hotel search and reservations, built following **Travel engineering standards**. This system is designed to handle high-traffic scenarios with Redis caching, optimistic locking, and comprehensive validation.
 
@@ -16,6 +18,7 @@ A production-quality Spring Boot REST API for hotel search and reservations, bui
 - [Cache Strategy](#cache-strategy)
 - [Getting Started](#getting-started)
 - [Running with Docker](#running-with-docker)
+- [CI/CD Pipeline](#cicd-pipeline)
 - [Testing](#testing)
 - [Project Structure](#project-structure)
 
@@ -329,6 +332,51 @@ This will:
 - Start Redis on port 6379
 - Build and run the Spring Boot app on port 8080
 - Initialize database with sample hotels
+
+## 🚀 CI/CD Pipeline
+
+This project uses **GitHub Actions** for continuous integration and deployment.
+
+### Automated Workflows
+
+1. **CI/CD Pipeline** - Runs on every push and PR
+   - Builds and tests the application
+   - Generates code coverage reports
+   - Builds Docker images
+   - Deploys to staging (on main branch)
+   - Deploys to production (manual approval required)
+
+2. **Pull Request Checks** - Validates PRs
+   - Runs quick tests
+   - Validates code formatting
+   - Checks PR title format
+
+3. **Docker Publish** - Multi-platform builds
+   - Builds for linux/amd64 and linux/arm64
+   - Publishes to GitHub Container Registry
+   - Scans for security vulnerabilities
+
+4. **Dependency Updates** - Weekly automated updates
+   - Checks for Maven dependency updates
+   - Creates PRs with updates
+
+### Pipeline Status
+
+View the current pipeline status in the [Actions tab](https://github.com/shaifulshabuj/travelfar/actions).
+
+### Code Coverage
+
+Coverage reports are generated on every build:
+- Minimum requirement: 60%
+- Target: 80%
+
+View coverage locally:
+```bash
+mvn clean test jacoco:report
+open target/site/jacoco/index.html
+```
+
+**For detailed CI/CD documentation, see [docs/CI-CD.md](docs/CI-CD.md)**
 
 ## 🧪 Testing
 
