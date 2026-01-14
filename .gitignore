@@ -1,0 +1,29 @@
+# Ignore Maven build artifacts
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Ignore IDE files
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# Ignore logs
+*.log
+logs/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore application properties with secrets
+application-local.yml
+application-secrets.yml
+
+# Ignore Docker volumes
+mysql_data/
+.github/copilot-instructions.md
